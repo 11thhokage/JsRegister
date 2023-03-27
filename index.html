@@ -1,0 +1,70 @@
+<html>
+
+<head>
+<title></title>
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript">
+
+function register(){
+    
+    var x = new Array();
+    x[0] = document.getElementById('firstname').value;
+    x[1] = document.getElementById('lastname').value;
+    x[2] = document.getElementById('email').value;
+    x[3] = document.getElementById('password').value;
+    x[4] = document.getElementById('renterpass').value;
+    
+    
+    var h = new Array();
+    h[0] = "<span style='color:red'>Enter a first Name</span>";
+    h[1] = "<span style='color:red'>Enter a last Name</span>";
+    h[2] = "<span style='color:red'>Enter an Email</span>";
+    h[3] = "<span style='color:red'>Enter a Password</span>";
+    h[4] = "<span style='color:red'>Confirm ur pass</span>";
+    
+    var divs = new Array("wfname", "wlname", "wemail", "wpassword", "wcpassword");
+    
+    
+    for(i in x){
+        
+        var error = h[i];
+        var div = divs[i];
+        
+        if(x[i]==""){
+            document.getElementById(div).innerHTML = error;
+        }else{
+            document.getElementById(div).innerHTML="OK";
+        }
+    }
+}
+
+function passChecker(){
+    var first = document.getElementById('password').value;
+    var second = document.getElementById('renterpass').value;
+    
+    if(second==first){
+       document.getElementById('wcpassword').innerHTML = "password confirmed";
+    } else {
+        document.getElementById('wcpassword').innerHTML = "<span style='color:red'>it's not the same</span>";
+    }
+}
+
+
+</script>
+</head>
+
+<body>
+<form id="haha">
+        <table id="1">
+            <tr><td>First Name:</td><td><input  type ="text" name="firstname" id="firstname" onkeyup="register()"/></td><td><div id="wfname"></div></td></tr>
+            <tr><td>Last Name:</td><td><input type ="text" name ="lastname" id ="lastname" onkeyup="register()"/></td><td><div id="wlname"></div></td></tr>
+            <tr><td>Email:</td><td><input type="text" name="email" id="email" onkeyup="register()"/></td><td><div id="wemail"></div></td></tr>
+            <tr><td>Password:</td><td><input type="text" name="password" id="password" onkeyup="register()"/></td><td><div id="wpassword"></div></td></tr>
+            <tr><td>Re-enter password:</td><td><input type="text" name"renterpass" id="renterpass" onkeyup="passChecker()"/></td><td><div id="wcpassword"></div></td></tr>
+        </table>
+        <br>
+<input type="button" name="submit" value="enter"/>
+     
+</form>
+</body>
+</html>
